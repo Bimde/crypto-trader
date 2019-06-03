@@ -1,3 +1,18 @@
+syntax = "proto3";
+
+package build;
+
+message Ticker {
+    string base = 1;
+    string target = 2;
+    float price = 3;
+    float volume = 4;
+    float change = 5;
+}
+
 message CryptonatorResponse {
-	
+    Ticker ticker = 1;
+    int64 timestamp = 2;
+    bool success = 3;
+    string error = 4;
 }
