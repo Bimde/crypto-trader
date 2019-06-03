@@ -7,7 +7,6 @@ import (
 
 	"github.com/Bimde/crypto-trader/build"
 
-	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 )
@@ -19,15 +18,15 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to listen: %v", err)
 	}
-	log.Println("Starting Cart service")
+	log.Println("Starting stock exchange")
 	s := grpc.NewServer()
-	pb.RegisterStockExchangeServer(s, &server{})
+	build.RegisterStockExchangeServer(s, &server{})
 	reflection.Register(s)
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("Failed to serve: %v", err)
 	}
 }
 
-func GetStockPrice(c context.Context, req *GetStockPriceRequest) (*GetStockPriceResponse, error)
-	return &GetStockPriceResponse{Stock{Ticker: "GOOG", Price: 21.22}}, nil
+func (s *server) GetStockPrice(c context.Context, req *build.GetStockPriceRequest) (*build.GetStockPriceResponse, error) {
+	return &build.GetStockPriceResponse{Stock: []*build.Stock{&build.Stock{Ticker: "GOOG", Price: 21.22}}}, nil
 }
