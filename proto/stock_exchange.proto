@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package proto;
+package build;
 
 message Stock {
 	string ticker = 1;

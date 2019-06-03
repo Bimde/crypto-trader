@@ -5,14 +5,12 @@ import (
 	"log"
 	"net"
 
-	"../../proto"
+	"github.com/Bimde/crypto-trader/build"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 )
-
-const ()
 
 type server struct{}
 
