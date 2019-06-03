@@ -12,6 +12,8 @@ class StockExchange {
 
     const Stock getStock(const string& ticker);
   private:
+    std::unordered_map<string, Stock> convergenceTo;
+    // "Market price"
     std::unordered_map<string, Stock> tickerToStock;
 };
 
